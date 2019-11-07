@@ -1,0 +1,66 @@
+//
+// min-width media query
+//
+// @param  size|length  min  width
+//
+_media-min(min) {
+  size = _hash-search(min, _sizes);
+  if (min == 'sm') {
+    {block};
+  } else if (size != null) {
+    @media (min-width: _sizes[min]) {
+      {block};
+    }
+  } else if (min == _sizes.sm) {
+    {block};
+  } else {
+    @media (min-width: min) {
+      {block};
+    }
+  }
+}
+
+//
+// max-width media query
+//
+// @param  size|length  max  width
+//
+_media-max(max) {
+  size = _hash-search(max, _sizes);
+  if (size != null) {
+    @media (max-width: _sizes-max[max]) {
+      {block};
+    }
+  } else {
+    @media (max-width: max) {
+      {block};
+    }
+  }
+}
+
+//
+// Media query for smartphone size
+//
+_media-sm-only() {
+  +_media-max(_sizes-max.sm) {
+    {block};
+  }
+}
+
+//
+// Media query for tablet size
+//
+_media-md-only() {
+  @media (min-width: _sizes.md) and (max-width: _sizes-max.md) {
+    {block};
+  }
+}
+
+//
+// Media query for pc size
+//
+_media-lg-only() {
+  +_media-min(_sizes.lg) {
+    {block};
+  }
+}

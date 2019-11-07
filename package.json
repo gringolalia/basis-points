@@ -9,12 +9,17 @@
   "dependencies": {
     "babel-loader": "^8.0.6",
     "getbasis": "^6.4.0",
+    "handlebars": "^4.5.1",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-pwa": "^3.0.4",
     "@vue/cli-service": "^3.0.4",
+    "accord": "^0.30.0",
+    "pug": "^2.0.4",
+    "pug-loader": "^2.4.0",
+    "pug-plain-loader": "^1.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.6.10"

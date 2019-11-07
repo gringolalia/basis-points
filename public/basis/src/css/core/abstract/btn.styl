@@ -1,0 +1,51 @@
+//
+// Button
+//
+// @param  hash  params  properties for decoration
+//
+// .c-btn {
+//   _btn({
+//     background-color: null,
+//     border: null,
+//     padding: _space(.5) _space(1),
+//   });
+// }
+//
+// <a class="c-btn" role="button">btn</a>
+//
+
+_btn(params = {}) {
+  params = merge(
+    {
+      background-color: null,
+      border: null,
+      padding: _space(.5) _space(1),
+    },
+    params
+  );
+
+  background-color = params['background-color'];
+  border = params['border'];
+  padding = params['padding'];
+
+  display: inline-block;
+  cursor: pointer;
+  line-height: 1;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  if (! _is-null(background-color)) {
+    background-color: background-color;
+  }
+
+  if (! _is-null(border)) {
+    border: border;
+  }
+
+  if (! _is-null(padding)) {
+    padding: padding;
+  }
+}

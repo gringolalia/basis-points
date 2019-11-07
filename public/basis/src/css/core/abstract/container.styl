@@ -1,0 +1,41 @@
+//
+// Container (Fluid)
+//
+// .c-container-fluid {
+//   _container-fluid();
+// }
+//
+// <div class="c-container-fluid">
+//   ...
+// </div>
+//
+
+_container-fluid() {
+}
+
+//
+// Container max-width
+// @var  length
+//
+_container-max-width ?= 1200px;
+
+//
+// Container
+//
+// .c-container {
+//   _container();
+// }
+//
+// <div class="c-container">
+//   ...
+// </div>
+//
+
+_container() {
+  margin-right: auto;
+  margin-left: auto;
+
+  +_media-lg-only() {
+    max-width: _px2rem(_container-max-width);
+  }
+}

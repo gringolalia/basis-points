@@ -1,0 +1,46 @@
+//
+// Generate balloon
+//
+// @param  string  angle   position of arrow
+// @param  hash    params  properties for decoration
+//
+_balloon(angle, params = {}) {
+  params = merge(
+    {
+      background-color: null,
+      border-color: null,
+      border-size: null,
+      triangle-size: 10px,
+      padding: _space(.75),
+    },
+    params
+  );
+
+  background-color = params['background-color'];
+  border-color = params['border-color'];
+  border-size = params['border-size'];
+  triangle-size = params['triangle-size'];
+  padding = params['padding'];
+
+  position: relative;
+
+  if (! _is-null(border-size)) {
+    background-color: background-color;
+  }
+
+  if (! _is-null(border-size) && ! _is-null(border-color)) {
+    border: border-size solid border-color;
+  }
+
+  if (! _is-null(padding)) {
+    padding: padding;
+  }
+
+  _balloon-triangle(
+    angle,
+    triangle-size,
+    background-color,
+    border-size,
+    border-color
+  );
+}

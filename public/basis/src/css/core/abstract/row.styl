@@ -1,0 +1,97 @@
+//
+// Grid System
+//
+// .c-row {
+//   _row();
+//   &__col {
+//     _row__col();
+//     &--1-3 {
+//       _row__col(1, 3);
+//     }
+//     &--offset-1-3 {
+//       _row__col--offset(1, 3);
+//     }
+//   }
+// }
+//
+// <div class="c-row">
+//   <div class="c-row__col">
+//     ...
+//   </div>
+// </div>
+//
+
+_row() {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+//
+// Setting column width
+//
+// @param  int  columns      molecule column size
+// @param  int  max-columns  denominator column size
+//
+_row__col(columns = null, max-columns = null) {
+  if (columns != null && max-columns != null) {
+    width = percentage(columns / max-columns);
+    _row__col--width(width);
+  } else {
+    _row__col--width(1);
+  }
+}
+
+//
+// Setting column width
+//
+// @param  length  width
+//
+_row__col--width(width) {
+  if (width == auto) {
+    flex: auto;
+    max-width: 100%;
+  } else if (width == 1) {
+    flex: 1;
+    max-width: 100%;
+  } else {
+    flex: 0 1 width;
+    max-width: width;
+  }
+}
+
+//
+// Setting column offset
+//
+// @param  int  columns      molecule offset size
+// @param  int  max-columns  denominator offset size
+//
+_row__col--offset(columns = null, max-columns = null) {
+  if (columns != null && max-columns != null) {
+    margin-left: percentage(columns / max-columns);
+  }
+  if (columns == 0) {
+    margin-left: 0;
+  }
+}
+
+//
+// Adding margin for the column
+//
+// @param  int  coefficient
+//
+_row__col--margin(coefficient) {
+  _padding-right(coefficient / 2);
+  _padding-left(coefficient / 2);
+  _margin-bottom(coefficient);
+}
+
+//
+// Adding margin for the row
+//
+// @param  int  coefficient
+//
+_row--margin(coefficient) {
+  _margin-right(coefficient / 2 * -1);
+  _margin-left(coefficient / 2 * -1);
+  _margin-bottom(coefficient * -1);
+}

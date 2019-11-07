@@ -1,0 +1,29 @@
+//
+// Ghost style
+//
+// @param  hash  params  properties for decoration
+//
+// .c-btn-ghost {
+//   _btn();
+//   _ghost({
+//     border-size: 1px,
+//     color: #fff,
+//   });
+// }
+//
+// <a class="c-btn-ghost" role="button">btn</a>
+//
+
+_ghost(params = {}) {
+  params = merge(
+    {
+      border-size : 1px,
+      color       : #fff,
+    },
+    params
+  );
+
+  background-color: transparent !important;
+  border: params['border-size'] solid params['color'];
+  color: params['color'];
+}

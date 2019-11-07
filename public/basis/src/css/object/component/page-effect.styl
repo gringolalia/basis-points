@@ -1,0 +1,25 @@
+/*
+---
+name: Page Effect
+category:
+  - object/component
+  - object/component/page-effect
+---
+
+```html
+<div class="_c-page-effect" data-c="page-effect" data-page-effect="fadein" aria-hidden="false">
+  <div class="_c-page-effect__item">
+    Loading...
+  </div>
+</div>
+```
+*/
+
+.{_prefix}c-page-effect {
+  _page-effect();
+
+  &__item {
+    _position(absolute, 50%, null, null, 50%);
+    transform: translate(-50%, -50%);
+  }
+}

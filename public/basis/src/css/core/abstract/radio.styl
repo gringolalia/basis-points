@@ -1,0 +1,74 @@
+//
+// Radio
+//
+// @param  hash  params  properties for decoration
+//
+// .c-radio {
+//   _radio({
+//     size: _base-font-size-px,
+//   });
+// }
+//
+// <label>
+//   <span class="c-radio">
+//     <input type="radio">
+//     <span class="c-radio__control"></span>
+//   </span>
+//   ...
+// </label>
+//
+
+_radio(params = {}) {
+  params = merge(
+    {
+      size: _base-font-size-px,
+    },
+    params
+  );
+
+  z-index: 1;
+  size = params['size'];
+
+  position: relative;
+  display: inline-block;
+  _square(size);
+
+  > [type="radio"],
+  &__control,
+  &__control::before {
+    _position(absolute, 0, null, null, 0);
+    display: block;
+    _square(size, 100%);
+  }
+
+  > [type="radio"] {
+    z-index: z-index;
+    cursor: pointer;
+    opacity: 0 !important;
+    outline: 0;
+
+    &:checked ~ ^[0]__control::after {
+      opacity: 1;
+    }
+  }
+
+  &__control {
+    z-index: (z-index - 1);
+
+    &::before {
+      content: '';
+      background-color: #fff;
+      border: 1px solid _light(_color-gray);
+    }
+
+    &::after {
+      _position(absolute, 50%, null, null, 50%);
+      transform: translate(-50%, -50%);
+      content: '';
+      display: block;
+      background-color: _color-text;
+      _square((size / 2), 100%);
+      opacity: 0;
+    }
+  }
+}

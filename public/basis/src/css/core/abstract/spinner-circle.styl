@@ -1,0 +1,53 @@
+//
+// Spinner (Circle)
+//
+// @param  hash  params  properties for decoration
+//
+// .c-spinner-circle {
+//   _spinner-circle({
+//     size: 20px,
+//     color: _light(_color-gray),
+//     border-size: 3px,
+//     delay: 0s,
+//     duration: 2s,
+//   });
+// }
+//
+// <div class="c-spinner-circle"></div>
+//
+
+_spinner-circle(params = {}) {
+  params = merge(
+    {
+      size: 20px,
+      color: _light(_color-gray),
+      border-size: 3px,
+      delay: 0s,
+      duration: 2s,
+    },
+    params
+  );
+
+  size = params['size'];
+  color = params['color'];
+  border-size = params['border-size'];
+  delay = params['delay'];
+  duration = params['duration'];
+
+  animation-name = _sanitize-animation-name(_spinner-circle- + join('-', values(params)));
+
+  display: inline-block;
+  _circle(size);
+  border: border-size solid color;
+  border-top-color: _dark(color);
+  animation: animation-name duration linear delay infinite;
+
+  @keyframes animation-name {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

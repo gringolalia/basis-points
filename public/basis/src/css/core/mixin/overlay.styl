@@ -1,0 +1,20 @@
+//
+// Overlay
+//
+// @param  hex  hex
+// @param  int  opacity
+//
+_overlay(hex, opacity = 1) {
+  position: relative;
+
+  &::before {
+    _position(absolute, 0, 0, 0, 0);
+    content: '';
+
+    if (1 == opacity) {
+      background-color: hex;
+    } else {
+      background-color: rgba(hex, opacity);
+    }
+  }
+}

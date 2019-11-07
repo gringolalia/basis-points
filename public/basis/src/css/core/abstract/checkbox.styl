@@ -1,0 +1,76 @@
+//
+// Checkbox
+//
+// .c-checkbox {
+//   _checkbox({
+//     size: _base-font-size-px,
+//     border-radius: _border-radius,
+//   });
+// }
+//
+// <label>
+//   <span class="c-checkbox">
+//     <input type="checkbox">
+//     <span class="c-checkbox__control"></span>
+//   </span>
+//   ...
+// </label>
+//
+
+_checkbox() {
+  params = merge(
+    {
+      size: _base-font-size-px,
+      border-radius: _border-radius,
+    },
+    params
+  );
+
+  z-index = 1;
+  border-radius = params['border-radius'];
+  size = params['size'];
+
+  position: relative;
+  display: inline-block;
+  _square(size);
+
+  > [type="checkbox"],
+  &__control,
+  &__control::before,
+  &__control::after {
+    _position(absolute, 0, null, null, 0);
+    display: block;
+    _square(size);
+  }
+
+  > [type="checkbox"] {
+    z-index: z-index;
+    cursor: pointer;
+    opacity: 0 !important;
+    outline: 0;
+
+    &:checked ~ ^[0]__control::after {
+      opacity: 1;
+    }
+  }
+
+  &__control {
+    z-index: (z-index - 1);
+
+    &::before {
+      content: '';
+      background-color: #fff;
+      border: 1px solid _light(_color-gray);
+      border-radius: border-radius;
+    }
+
+    &::after {
+      _ic();
+      content: "\e901";
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

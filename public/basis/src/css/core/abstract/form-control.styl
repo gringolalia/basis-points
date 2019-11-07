@@ -1,0 +1,19 @@
+//
+// Form Control
+//
+// .c-form-control {
+//   _form-control();
+// }
+//
+// <input type="text" class="c-form-control">
+//
+
+_form-control() {
+  _form-control-base-border();
+  _form-control-base-padding();
+
+  textarea& {
+    height: auto;
+    width: 100%;
+  }
+}

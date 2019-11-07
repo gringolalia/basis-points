@@ -1,0 +1,61 @@
+//
+// Default font size
+// If html { font-size: 62.5% }, set 10px
+// @type  px
+//
+_base-font-size-px ?= 16px;
+
+//
+// Default font size
+// @type  rem
+//
+_base-font-size = 1rem;
+
+//
+// Between the character and line of line-height
+// @type  rem
+//
+_between-lines ?= (_base-font-size / 4);
+
+//
+// Default line height
+// @type  rem
+//
+_base-line-height ?= (_base-font-size + _between-lines * 2);
+
+//
+// Margin coefficient
+// @type  int
+//
+_margin-coefficient ?= 1;
+
+//
+// The minimum number of columns
+// @type  int
+//
+_min-columns ?= 1;
+
+//
+// The maximum number of columns
+// @type  int
+//
+_max-columns ?= 12;
+
+//
+// Array of breakpoints
+// @type  array
+//
+_sizes ?= {
+  sm: 0,
+  md: (_px2rem(640px) / _px2rem(_base-font-size-px)),
+  lg: (_px2rem(1024px) / _px2rem(_base-font-size-px))
+};
+
+//
+// Array of breakpoints
+// @type  array
+//
+_sizes-max ?= {
+  sm: (_sizes.md - (1em / _strip-unit(_base-font-size-px))),
+  md: (_sizes.lg - (1em / _strip-unit(_base-font-size-px)))
+};

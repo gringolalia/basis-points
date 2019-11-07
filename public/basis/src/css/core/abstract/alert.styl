@@ -1,0 +1,46 @@
+//
+// Alert
+//
+// @param  hash  params  properties for decoration
+//
+// .c-alert {
+//   _alert({
+//     background-color: null,
+//     border: null,
+//     padding: _space(.75),
+//   });
+// }
+//
+// <div class="c-alert" role="alert">
+//   ...
+// </div>
+//
+
+_alert(params = {}) {
+  params = merge(
+    {
+      background-color: null,
+      border: null,
+      padding: _space(.75),
+    },
+    params
+  );
+
+  background-color = params['background-color'];
+  border = params['border'];
+  padding = params['padding'];
+
+  display: block;
+
+  if (! _is-null(background-color)) {
+    background-color: background-color;
+  }
+
+  if (! _is-null(border)) {
+    border: border;
+  }
+
+  if (! _is-null(padding)) {
+    padding: padding;
+  }
+}
